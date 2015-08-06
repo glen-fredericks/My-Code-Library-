@@ -1,0 +1,45 @@
+#region GET THE CURRENT FILE OBJECT
+		//get current file object
+		
+		private FWBS.OMS.OMSFile currentFile;
+		private FWBS.OMS.OMSFile _currentFile
+			{
+			get
+			{
+			if (currentFile == null)
+				currentFile = EnquiryForm.Enquiry.Object as FWBS.OMS.OMSFile;
+			return currentFile;
+			}
+		}
+		
+//OR - 	search control
+		private FWBS.OMS.OMSFile currentFile
+;
+		private FWBS.OMS.OMSFile _currentFile
+		{
+			get
+			{
+				if (currentFile == null)
+				{long FileID = (long)SearchControl.CurrentItem()["fileID"].Value;
+			currentFile = FWBS.OMS.OMSFile.GetFile(FileID);
+				}
+				return currentFile;
+			}
+		}
+
+//OR  - return object
+
+public FWBS.OMS.OMSFile currentFile
+		{
+			get
+			{
+				return EnquiryForm.Enquiry.Object as FWBS.OMS.OMSFile;
+			}
+		}
+
+//OR - 
+
+FWBS.OMS.OMSFILE currentFile = Enquiry.Object as FWBS.OMS.OMSFile;
+
+		
+#endregion
